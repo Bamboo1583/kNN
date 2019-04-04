@@ -39,9 +39,10 @@ def classify0(input_data, data_set, labels_set, k):
         vote_index_label = labels_set[sorted_dist_indices[i]]
         # 统计类别次数
         class_count[vote_index_label] = class_count.get(vote_index_label, 0) + 1
-        # 把分类结果进行降序排序，然后返回得票数最多的分类结果
-        sorted_class_count = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
-        return sorted_class_count[0][0]
+
+    # 把分类结果进行降序排序，然后返回得票数最多的分类结果
+    sorted_class_count = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_class_count[0][0]
 
 
 def file_to_matrix(filename):
@@ -160,6 +161,7 @@ def handwriting_class_test():
         classifier_result = classify0(vector_under_test, training_mat, hw_labels, 3)
         print("the classifier came back with: %d, the real answer is: %d" % (classifier_result, class_num_str))
         if (classifier_result != class_num_str): error_count += 1.0
+
     # 输出错误个数
     print("\nthe total number of errors is: %d" % error_count)
     # 输出错误率

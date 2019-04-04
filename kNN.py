@@ -73,9 +73,10 @@ def classify0(input_data, data_set, labels_set, k):
         vote_index_label = labels_set[sorted_dist_indices[i]]
         # 统计类别次数
         class_count[vote_index_label] = class_count.get(vote_index_label, 0) + 1
-        # 把分类结果进行降序排序，然后返回得票数最多的分类结果(按照字典中的value排序)
-        sorted_class_count = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
-        return sorted_class_count[0][0]  # 返回字典中的key
+
+    # 把分类结果进行降序排序，然后返回得票数最多的分类结果(按照字典中的value排序)
+    sorted_class_count = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_class_count[0][0]  # 返回字典中的key
 
 
 if __name__ == '__main__':
